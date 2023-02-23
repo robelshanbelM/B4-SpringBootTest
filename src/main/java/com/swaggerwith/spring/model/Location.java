@@ -1,6 +1,7 @@
 package com.swaggerwith.spring.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 @Entity
 public class Location {
 

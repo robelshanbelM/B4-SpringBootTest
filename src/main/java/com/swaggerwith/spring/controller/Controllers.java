@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -25,13 +26,19 @@ public class Controllers {
 	
 	@Autowired
 	LocationRepository locationRepository;
+
+	
+	
 	
 	@PostMapping("/location")
-	
+
 	public ResponseEntity<?> saveLocation( @RequestBody Location location){
 		
 		
+		
+		
 		locationRepository.save(location);
+		
 		
 		return new ResponseEntity<>(location,HttpStatus.CREATED);
 		
@@ -39,10 +46,16 @@ public class Controllers {
 		
 	}
 	
-	@GetMapping("/location")
 	
+	
+	
+	
+	
+	@GetMapping("/location")
+
 	public List<Location>listofLocation(){
 		
+		System.out.println(locationRepository.findAll());
 		return locationRepository.findAll();
 		
 	}
@@ -101,6 +114,9 @@ public class Controllers {
 		return new ResponseEntity<String>(" location is deleted",HttpStatus.NO_CONTENT);
 		
 	}
+	
+	
+	
 	
 	
 	
